@@ -1,0 +1,251 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">8.0 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">66.7%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a humanities passage containing implicit and overlapping themes (e.g., a literature review discussing postcolonial theory, identity politics, and narrative structure) to evaluate whether the prompt can identify both explicit and nuanced conceptual topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> Postcolonial literature fundamentally interrogates the construction of identity through narrative frameworks inherited from colonial discourse. Achebe's intervention in representing African subjectivity challenges the monolithic narratives established by Western literary traditions, demonstrating how identity politics emerges not merely as explicit thematic content but through the structural choices embedded within narrative voice and temporal organization. The politics of representation intersect with questions of authenticity and cultural agency, revealing how postcolonial authors simultaneously inhabit and subvert the literary conventions available to them. These overlapping concerns—the decolonization of narrative form, the reclamation of historical agency, and the interrogation of identity categories—constitute the central preoccupations of postcolonial theory, which insists that form and content cannot be disentangled from broader epistemological struggles.</td>
+                <td class="criteria">• Captures both explicit topics (postcolonial literature, identity politics, narrative structure) and implicit/overlapping themes (decolonization, representation, authenticity, literary conventions, epistemology)<br>• Distinguishes between distinct conceptual areas while recognizing their interconnections<br>• Returns results as a JSON array of strings with no additional formatting or explanation</td>
+                <td class="output"><pre>```json
+[
+  "Postcolonial literature",
+  "Identity construction",
+  "Narrative frameworks",
+  "Colonial discourse",
+  "African subjectivity",
+  "Western literary traditions",
+  "Identity politics",
+  "Narrative voice",
+  "Temporal organization",
+  "Politics of representation",
+  "Authenticity",
+  "Cultural agency",
+  "Literary conventions",
+  "Decolonization of narrative form",
+  "Reclamation of historical agency",
+  "Identity categories",
+  "Postcolonial theory",
+  "Epistemological struggles"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">10</span></td>
+                <td class="reasoning">The solution fully satisfies all three mandatory requirements: it contains a valid JSON array of strings, each string contains only a topic without extra commentary, and the response is the JSON array alone with no additional text. The secondary criteria are also met—the extraction captures both explicit and implicit themes, distinguishes between conceptual areas while recognizing their relationships, and demonstrates sophisticated understanding of postcolonial theory. The topics are well-chosen and appropriately granular for a scholarly article. The minor weaknesses noted are marginal and do not significantly detract from an otherwise excellent extraction.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a interdisciplinary STEM passage that mixes multiple domains (e.g., a bioinformatics abstract combining genetics, machine learning, and statistical analysis) to assess whether the prompt accurately separates distinct methodological and subject-matter topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> We present a novel deep learning framework for genomic variant classification that integrates convolutional neural networks with Bayesian statistical inference to predict pathogenic mutations in whole-exome sequencing data. Our approach combines feature extraction from DNA sequences using recurrent neural networks, dimensionality reduction via principal component analysis, and probabilistic graphical models to quantify uncertainty in predictions. We validate our method on 50,000 annotated variants using cross-validation, achieving 94% sensitivity while maintaining 0.02 false positive rate. The model incorporates regularization techniques including dropout and L2 penalization to prevent overfitting, and we employ SHAP values for interpretability of feature importance in the genetic variants. Computational efficiency is optimized through GPU acceleration and distributed processing across multi-core architectures.</td>
+                <td class="criteria">• Extracts all distinct methodological topics (e.g., deep learning, Bayesian inference, neural networks, PCA, graphical models, regularization, SHAP)<br>• Extracts all distinct subject-matter/domain topics (e.g., genomics, variant classification, mutations, whole-exome sequencing, DNA sequences)<br>• Separates interdisciplinary concepts into their respective domains rather than grouping them<br>• Returns results as a JSON array of strings with no duplicates or redundant entries</td>
+                <td class="output"><pre>```json
+[
+  "deep learning",
+  "genomic variant classification",
+  "convolutional neural networks",
+  "Bayesian statistical inference",
+  "pathogenic mutations",
+  "whole-exome sequencing",
+  "recurrent neural networks",
+  "feature extraction",
+  "DNA sequences",
+  "dimensionality reduction",
+  "principal component analysis",
+  "probabilistic graphical models",
+  "uncertainty quantification",
+  "cross-validation",
+  "sensitivity",
+  "false positive rate",
+  "regularization techniques",
+  "dropout",
+  "L2 penalization",
+  "overfitting prevention",
+  "SHAP values",
+  "feature importance",
+  "GPU acceleration",
+  "distributed processing",
+  "multi-core architectures"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all three mandatory requirements: it is a valid JSON array containing only topic strings with no commentary, and the response contains only the JSON array. It also meets the secondary criteria by extracting distinct methodological topics (neural networks, Bayesian inference, PCA, graphical models, regularization, SHAP, GPU acceleration) and domain topics (genomic variant classification, mutations, whole-exome sequencing, DNA sequences) while properly separating interdisciplinary concepts. The extraction is thorough and includes all major topics mentioned in the passage. Minor quibbles about granularity level do not constitute significant deficiencies.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a dense social science passage containing jargon, proper nouns, and methodological references (e.g., a sociology study using mixed-methods on immigration policy) to verify the prompt filters out minor procedural details and focuses on substantive research topics</td>
+                <td class="prompt-inputs"><strong>content:</strong> This mixed-methods study employs a convergent parallel design to examine the relationship between immigration policy restrictiveness and labor market outcomes for undocumented workers in metropolitan areas. Quantitative analysis utilizing the American Community Survey (2015-2019) and logistic regression models (n=12,847) reveals that stricter enforcement regimes correlate with 23% lower wage earnings and reduced occupational mobility. Qualitative interviews (n=45) conducted in Phoenix and Houston using purposive sampling and thematic coding reveal how deportation fears influence workplace bargaining power and sectoral concentration. The research operationalizes policy restrictiveness through the Migrant Policy Index and controls for human capital variables, geographic clustering, and temporal trends. Findings suggest structural vulnerability rather than individual characteristics drive labor market disparities, with implications for labor standards enforcement and social policy.</td>
+                <td class="criteria">• Extracts substantive research topics (e.g., immigration policy, labor market outcomes, deportation effects) while excluding procedural/methodological details (mixed-methods design, sample sizes, specific statistical tests, coding procedures)<br>• Output is a valid JSON array of strings with clear, descriptive topic labels<br>• Captures the core theoretical and empirical focus areas without redundant or overly granular entries</td>
+                <td class="output"><pre>```json
+[
+  "immigration policy restrictiveness",
+  "labor market outcomes",
+  "undocumented workers",
+  "metropolitan areas",
+  "mixed-methods study",
+  "convergent parallel design",
+  "American Community Survey",
+  "logistic regression models",
+  "wage earnings",
+  "occupational mobility",
+  "enforcement regimes",
+  "qualitative interviews",
+  "deportation fears",
+  "workplace bargaining power",
+  "sectoral concentration",
+  "Migrant Policy Index",
+  "human capital variables",
+  "geographic clustering",
+  "temporal trends",
+  "structural vulnerability",
+  "labor standards enforcement",
+  "social policy",
+  "Phoenix",
+  "Houston",
+  "purposive sampling",
+  "thematic coding"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-low">5</span></td>
+                <td class="reasoning">The solution meets all three mandatory requirements: it is a valid JSON array of strings with topics and no extra commentary. However, it violates the secondary criteria by including procedural/methodological details (mixed-methods design, convergent parallel design, logistic regression models, purposive sampling, thematic coding) that should be excluded according to the explicit instruction to extract 'substantive research topics...while excluding procedural/methodological details.' Additionally, geographic locations and specific data sources are included when they function more as contextual information than substantive topics. The solution includes approximately 6-8 items that should have been excluded, representing a meaningful deviation from the stated criteria despite meeting mandatory requirements.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

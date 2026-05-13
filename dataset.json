@@ -1,0 +1,39 @@
+[
+  {
+    "prompt_inputs": {
+      "content": "Postcolonial literature fundamentally interrogates the construction of identity through narrative frameworks inherited from colonial discourse. Achebe's intervention in representing African subjectivity challenges the monolithic narratives established by Western literary traditions, demonstrating how identity politics emerges not merely as explicit thematic content but through the structural choices embedded within narrative voice and temporal organization. The politics of representation intersect with questions of authenticity and cultural agency, revealing how postcolonial authors simultaneously inhabit and subvert the literary conventions available to them. These overlapping concerns\u2014the decolonization of narrative form, the reclamation of historical agency, and the interrogation of identity categories\u2014constitute the central preoccupations of postcolonial theory, which insists that form and content cannot be disentangled from broader epistemological struggles."
+    },
+    "solution_criteria": [
+      "Captures both explicit topics (postcolonial literature, identity politics, narrative structure) and implicit/overlapping themes (decolonization, representation, authenticity, literary conventions, epistemology)",
+      "Distinguishes between distinct conceptual areas while recognizing their interconnections",
+      "Returns results as a JSON array of strings with no additional formatting or explanation"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into JSON array of strings",
+    "scenario": "Testing with a humanities passage containing implicit and overlapping themes (e.g., a literature review discussing postcolonial theory, identity politics, and narrative structure) to evaluate whether the prompt can identify both explicit and nuanced conceptual topics"
+  },
+  {
+    "prompt_inputs": {
+      "content": "We present a novel deep learning framework for genomic variant classification that integrates convolutional neural networks with Bayesian statistical inference to predict pathogenic mutations in whole-exome sequencing data. Our approach combines feature extraction from DNA sequences using recurrent neural networks, dimensionality reduction via principal component analysis, and probabilistic graphical models to quantify uncertainty in predictions. We validate our method on 50,000 annotated variants using cross-validation, achieving 94% sensitivity while maintaining 0.02 false positive rate. The model incorporates regularization techniques including dropout and L2 penalization to prevent overfitting, and we employ SHAP values for interpretability of feature importance in the genetic variants. Computational efficiency is optimized through GPU acceleration and distributed processing across multi-core architectures."
+    },
+    "solution_criteria": [
+      "Extracts all distinct methodological topics (e.g., deep learning, Bayesian inference, neural networks, PCA, graphical models, regularization, SHAP)",
+      "Extracts all distinct subject-matter/domain topics (e.g., genomics, variant classification, mutations, whole-exome sequencing, DNA sequences)",
+      "Separates interdisciplinary concepts into their respective domains rather than grouping them",
+      "Returns results as a JSON array of strings with no duplicates or redundant entries"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into JSON array of strings",
+    "scenario": "Testing with a interdisciplinary STEM passage that mixes multiple domains (e.g., a bioinformatics abstract combining genetics, machine learning, and statistical analysis) to assess whether the prompt accurately separates distinct methodological and subject-matter topics"
+  },
+  {
+    "prompt_inputs": {
+      "content": "This mixed-methods study employs a convergent parallel design to examine the relationship between immigration policy restrictiveness and labor market outcomes for undocumented workers in metropolitan areas. Quantitative analysis utilizing the American Community Survey (2015-2019) and logistic regression models (n=12,847) reveals that stricter enforcement regimes correlate with 23% lower wage earnings and reduced occupational mobility. Qualitative interviews (n=45) conducted in Phoenix and Houston using purposive sampling and thematic coding reveal how deportation fears influence workplace bargaining power and sectoral concentration. The research operationalizes policy restrictiveness through the Migrant Policy Index and controls for human capital variables, geographic clustering, and temporal trends. Findings suggest structural vulnerability rather than individual characteristics drive labor market disparities, with implications for labor standards enforcement and social policy."
+    },
+    "solution_criteria": [
+      "Extracts substantive research topics (e.g., immigration policy, labor market outcomes, deportation effects) while excluding procedural/methodological details (mixed-methods design, sample sizes, specific statistical tests, coding procedures)",
+      "Output is a valid JSON array of strings with clear, descriptive topic labels",
+      "Captures the core theoretical and empirical focus areas without redundant or overly granular entries"
+    ],
+    "task_description": "Extract topics out of a passage of text from a scholarly article into JSON array of strings",
+    "scenario": "Testing with a dense social science passage containing jargon, proper nouns, and methodological references (e.g., a sociology study using mixed-methods on immigration policy) to verify the prompt filters out minor procedural details and focuses on substantive research topics"
+  }
+]
